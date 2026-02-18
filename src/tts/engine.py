@@ -25,33 +25,45 @@ class TTSEngine:
         self._init_engine()
         self._start_worker()
         
-        logger.info(f"TTS Engine initialized with voice: {self.voice}")
+        logger.info(f"TTS Engine initialized with rate: {self.rate}")
     
     def _init_engine(self):
         """Initialize the TTS engine with configured settings."""
         try:
             self.engine = pyttsx3.init()
             
-            # Configure voice
+            # Set rate and volume first
+            self.engine.setProperty('rate', self.rate)
+            self.engine.setProperty('volume', self.volume)
+            
+            # Try to find Polish voice
             voices = self.engine.getProperty('voices')
             selected_voice = None
             
-            # Try to find Ukrainian or Russian voice
+            # Look for Polish voice
             for voice in voices:
+                voice_name = voice.name.lower()
+                voice_id = voice.id.lower()
                 voice_langs = ' '.join(voice.languages).lower() if voice.languages else ''
-                if 'uk' in voice_langs or 'ua' in voice_langs or 'ru' in voice_langs:
+                
+                # Check for Polish indicators
+                if ('polish' in voice_name or 
+                    'polski' in voice_name or 
+                    'pl' in voice_langs or 
+                    'pl_' in voice_id):
                     selected_voice = voice
-                    logger.info(f"Found suitable voice: {voice.name} ({voice.id})")
+                    logger.info(f"Found Polish voice: {voice.name}")
                     break
             
+            # Fallback to first available voice
             if selected_voice:
                 self.engine.setProperty('voice', selected_voice.id)
+                logger.info(f"Selected voice: {selected_voice.name}")
             else:
-                logger.warning("No Ukrainian/Russian voice found, using default")
-            
-            # Set rate and volume
-            self.engine.setProperty('rate', self.rate)
-            self.engine.setProperty('volume', self.volume)
+                logger.warning("No Polish voice found, using default")
+                if voices:
+                    self.engine.setProperty('voice', voices[0].id)
+                    logger.info(f"Using default voice: {voices[0].name}")
             
         except Exception as e:
             logger.error(f"Failed to initialize TTS engine: {e}")
