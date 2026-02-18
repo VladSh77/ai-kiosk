@@ -2,3 +2,13 @@ venv/
 __pycache__/
 *.pyc
 config/secrets.env
+
+# Security & AI Models
+venv/
+__pycache__/
+*.pyc
+.env
+src/assets/models/
+local_leads.db
+*.mp3
+.DS_Store

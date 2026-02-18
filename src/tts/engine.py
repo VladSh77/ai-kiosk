@@ -1,163 +1,127 @@
-"""Text-to-Speech engine with fallback and audio logging."""
+"""Text-to-Speech engine with Microsoft Azure Neural Voices via edge-tts."""
 import logging
-import pyttsx3
-from pathlib import Path
 import threading
 import queue
+import asyncio
+import os
+import tempfile
+import subprocess
+import platform
 import time
-
-from config.settings import TTS_ENGINE, TTS_VOICE, TTS_RATE, TTS_VOLUME
+import edge_tts
 
 logger = logging.getLogger(__name__)
 
 class TTSEngine:
-    """Text-to-speech engine with queuing and error handling."""
+    """Production-ready Neural TTS engine."""
     
     def __init__(self):
-        self.engine = None
         self.speech_queue = queue.Queue()
         self.is_speaking = False
         self.speaking_thread = None
-        self.voice = TTS_VOICE
-        self.rate = TTS_RATE
-        self.volume = TTS_VOLUME
+        self.current_process = None
+        self.voice = "pl-PL-ZofiaNeural" 
+        self.os_type = platform.system()
         
-        self._init_engine()
         self._start_worker()
-        
-        logger.info(f"TTS Engine initialized with rate: {self.rate}")
-    
-    def _init_engine(self):
-        """Initialize the TTS engine with configured settings."""
+        logger.info(f"TTS Engine initialized: {self.voice} on {self.os_type}")
+
+    def _clean_text(self, text):
+        import re
+        text = re.sub(r'```.*?```', '', text, flags=re.DOTALL)
+        text = re.sub(r'#.*$', '', text, flags=re.MULTILINE)
+        text = re.sub(r'[<>]', '', text)
+        return text.strip()
+
+    async def _generate_audio(self, text, output_file):
+        communicate = edge_tts.Communicate(text, self.voice, rate="+5%")
+        await communicate.save(output_file)
+
+    def _play_audio_sync(self, file_path):
         try:
-            self.engine = pyttsx3.init()
-            
-            # Set rate and volume
-            self.engine.setProperty('rate', self.rate)
-            self.engine.setProperty('volume', self.volume)
-            
-            voices = self.engine.getProperty('voices')
-            selected_voice = None
-            
-            # Priorytet 1: Polski głos Zosia
-            for voice in voices:
-                if 'Zosia' in voice.name and 'pl_PL' in str(voice.languages):
-                    selected_voice = voice
-                    logger.info(f"Found Polish voice: {voice.name}")
-                    break
-            
-            # Priorytet 2: Inne głosy żeńskie
-            if not selected_voice:
-                female_voices = ['Zuzana', 'Shelley', 'Sandy', 'Agnessa', 'Kate', 'Mariska', 'Milena', 'Monika', 'Natasha', 'Nika', 'Ola', 'Paulina', 'Tessa', 'Tina', 'Vani', 'Yelda', 'Yuna', 'Sara', 'Satu']
-                for voice in voices:
-                    if any(female in voice.name for female in female_voices):
-                        selected_voice = voice
-                        logger.info(f"Found female voice: {voice.name}")
-                        break
-            
-            # Priorytet 3: Dowolny głos
-            if not selected_voice and voices:
-                selected_voice = voices[0]
-                logger.info(f"Using default voice: {selected_voice.name}")
-            
-            if selected_voice:
-                self.engine.setProperty('voice', selected_voice.id)
-                logger.info(f"Selected voice: {selected_voice.name}")
+            if self.os_type == "Darwin":
+                cmd = ["afplay", file_path]
+            elif self.os_type == "Linux":
+                cmd = ["mpg123", "-q", file_path]
             else:
-                logger.warning("No voice found, using default")
+                cmd = ["powershell", "-c", f'(New-Object Media.SoundPlayer "{file_path}").PlaySync()']
+                
+            self.current_process = subprocess.Popen(cmd)
             
+            while self.current_process.poll() is None and self.is_speaking:
+                time.sleep(0.1)
+                
+            if not self.is_speaking and self.current_process.poll() is None:
+                self.current_process.terminate()
         except Exception as e:
-            logger.error(f"Failed to initialize TTS engine: {e}")
-            self.engine = None
-    
-    def _start_worker(self):
-        """Start background thread for speech queue processing."""
-        self.is_speaking = True
-        self.speaking_thread = threading.Thread(target=self._speech_worker, daemon=True)
-        self.speaking_thread.start()
-        logger.debug("TTS worker thread started")
-    
+            logger.error(f"Playback error: {e}")
+        finally:
+            self.current_process = None
+
     def _speech_worker(self):
-        """Process speech queue in background."""
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+
         while self.is_speaking:
             try:
-                text = self.speech_queue.get(timeout=1)
-                if text and self.engine:
-                    logger.info(f"Speaking: {text[:50]}...")
-                    self._speak_sync(text)
-                    self._save_audio_log(text)
+                text = self.speech_queue.get(timeout=0.5)
+                if not text:
+                    continue
+
+                cleaned = self._clean_text(text)
+                if not cleaned:
+                    self.speech_queue.task_done()
+                    continue
+
+                logger.info(f"Speaking: {cleaned[:50]}...")
+                fd, temp_path = tempfile.mkstemp(suffix=".mp3")
+                os.close(fd)
+
+                try:
+                    loop.run_until_complete(self._generate_audio(cleaned, temp_path))
+                    self._play_audio_sync(temp_path)
+                finally:
+                    if os.path.exists(temp_path):
+                        os.remove(temp_path)
+
                 self.speech_queue.task_done()
             except queue.Empty:
                 continue
             except Exception as e:
-                logger.error(f"Error in speech worker: {e}")
-    
-    def _speak_sync(self, text: str):
-        """Synchronous speech function."""
-        try:
-            self.engine.say(text)
-            self.engine.runAndWait()
-        except Exception as e:
-            logger.error(f"Speech error: {e}")
-    
-    def speak(self, text: str):
-        """Queue text for speaking (non-blocking)."""
+                logger.error(f"TTS Worker Error: {e}")
+
+        loop.close()
+
+    def _start_worker(self):
+        self.is_speaking = True
+        self.speaking_thread = threading.Thread(target=self._speech_worker, daemon=True)
+        self.speaking_thread.start()
+
+    def speak(self, text):
+        if text:
+            self.speech_queue.put(text)
+
+    def speak_wait(self, text):
         if not text:
             return
-        
-        if len(text) > 1000:
-            logger.warning(f"Text too long ({len(text)} chars), truncating")
-            text = text[:997] + "..."
-        
-        self.speech_queue.put(text)
-        logger.debug(f"Queued speech: {text[:50]}...")
-    
-    def speak_wait(self, text: str):
-        """Speak text and wait for completion (blocking)."""
-        if not text:
-            return
-        
-        if not self.engine:
-            logger.error("TTS engine not available")
-            return
-        
-        try:
-            logger.info(f"Speaking (blocking): {text[:50]}...")
-            self._speak_sync(text)
-            self._save_audio_log(text)
-        except Exception as e:
-            logger.error(f"Speech error: {e}")
-    
-    def _save_audio_log(self, text: str):
-        """Save speech text to log for audit."""
-        try:
-            from config.settings import TRANSCRIPTS_DIR
-            import datetime
-            
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = TRANSCRIPTS_DIR / f"tts_{timestamp}.txt"
-            
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write(f"{timestamp}: {text}\n")
-            
-            logger.debug(f"Saved TTS log to {filename}")
-        except Exception as e:
-            logger.error(f"Failed to save TTS log: {e}")
-    
+        self.speak(text)
+        self.speech_queue.join()
+
     def stop(self):
-        """Stop the TTS engine gracefully."""
         self.is_speaking = False
+        if self.current_process and self.current_process.poll() is None:
+            self.current_process.terminate()
+        
+        while not self.speech_queue.empty():
+            try:
+                self.speech_queue.get_nowait()
+                self.speech_queue.task_done()
+            except queue.Empty:
+                break
+
         if self.speaking_thread and self.speaking_thread.is_alive():
             self.speaking_thread.join(timeout=2)
-        
-        if self.engine:
-            try:
-                self.engine.stop()
-            except:
-                pass
-        
-        logger.info("TTS engine stopped")
-    
+        logger.info("TTS stopped")
+
     def __del__(self):
-        """Cleanup on deletion."""
         self.stop()

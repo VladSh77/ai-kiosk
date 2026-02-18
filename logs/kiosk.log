@@ -298,3 +298,215 @@
 2026-02-18 12:35:11,866 - src.tts.engine - INFO - TTS engine stopped
 2026-02-18 12:35:11,866 - __main__ - INFO - AI Kiosk stopped
 2026-02-18 12:35:11,866 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 12:54:30,184 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 12:54:30,184 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 12:54:30,767 - src.tts.engine - INFO - Found Polish voice: Zosia
+2026-02-18 12:54:30,767 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 12:54:30,767 - src.tts.engine - INFO - TTS Engine initialized with rate: 190
+2026-02-18 12:54:31,465 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 12:54:32,583 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 12:54:32,584 - src.nlp.processor - INFO - NLP Processor initialized with 4 menu items
+2026-02-18 12:54:32,584 - __main__ - INFO - All components initialized successfully
+2026-02-18 12:54:32,584 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 12:54:32,584 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 12:55:16,486 - __main__ - INFO - Received shutdown signal
+2026-02-18 12:55:16,910 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 12:55:16,910 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 12:55:16,911 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 12:57:01,498 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 12:57:01,498 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 12:57:02,077 - src.tts.engine - INFO - Found Polish voice: Zosia
+2026-02-18 12:57:02,077 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 12:57:02,077 - src.tts.engine - INFO - TTS Engine initialized with rate: 190
+2026-02-18 12:57:02,751 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 12:57:03,863 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 12:57:03,864 - src.nlp.processor - INFO - NLP Processor initialized with 4 menu items
+2026-02-18 12:57:03,864 - __main__ - INFO - All components initialized successfully
+2026-02-18 12:57:03,864 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 12:57:03,864 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 12:57:26,558 - src.stt.engine - INFO - Recognized: halo
+2026-02-18 12:57:26,559 - __main__ - INFO - Processing: halo
+2026-02-18 12:57:26,559 - src.nlp.processor - INFO - Processing query: halo
+2026-02-18 12:57:26,560 - src.nlp.processor - INFO - No match found for: halo
+2026-02-18 12:57:26,560 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 12:57:31,371 - src.stt.engine - INFO - Recognized: Przepraszam nie rozumiem Proszę zapytać obsługę
+2026-02-18 12:57:31,372 - __main__ - INFO - Processing: Przepraszam nie rozumiem Proszę zapytać obsługę
+2026-02-18 12:57:31,372 - src.nlp.processor - INFO - Processing query: Przepraszam nie rozumiem Proszę zapytać obsługę
+2026-02-18 12:57:31,372 - src.nlp.processor - INFO - No match found for: Przepraszam nie rozumiem Proszę zapytać obsługę
+2026-02-18 12:57:31,372 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 12:58:39,459 - __main__ - INFO - Received shutdown signal
+2026-02-18 12:58:39,573 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 12:58:39,573 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 12:58:39,573 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 13:00:51,903 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 13:00:51,903 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 13:00:52,477 - src.tts.engine - INFO - Found Polish voice: Zosia
+2026-02-18 13:00:52,477 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 13:00:52,478 - src.tts.engine - INFO - TTS Engine initialized with rate: 190
+2026-02-18 13:00:52,668 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 13:00:53,784 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 13:00:53,785 - src.nlp.processor - INFO - NLP Processor initialized with 4 menu items
+2026-02-18 13:00:53,785 - __main__ - INFO - All components initialized successfully
+2026-02-18 13:00:53,785 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 13:00:53,785 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 13:01:05,489 - src.stt.engine - INFO - Recognized: cześć
+2026-02-18 13:01:05,491 - __main__ - INFO - Processing: cześć
+2026-02-18 13:01:05,491 - src.nlp.processor - INFO - Processing query: cześć
+2026-02-18 13:01:05,491 - src.nlp.processor - INFO - No match found for: cześć
+2026-02-18 13:01:05,492 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 13:01:18,290 - src.stt.engine - INFO - Recognized: carcan Duck
+2026-02-18 13:01:18,291 - __main__ - INFO - Processing: carcan Duck
+2026-02-18 13:01:18,291 - src.nlp.processor - INFO - Processing query: carcan Duck
+2026-02-18 13:01:18,291 - src.nlp.processor - INFO - No match found for: carcan Duck
+2026-02-18 13:01:18,291 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 13:01:30,578 - src.stt.engine - INFO - Recognized: cześć
+2026-02-18 13:01:30,579 - __main__ - INFO - Processing: cześć
+2026-02-18 13:01:30,579 - src.nlp.processor - INFO - Processing query: cześć
+2026-02-18 13:01:30,579 - src.nlp.processor - INFO - No match found for: cześć
+2026-02-18 13:01:30,579 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 13:01:40,605 - src.stt.engine - INFO - Recognized: halo
+2026-02-18 13:01:40,606 - __main__ - INFO - Processing: halo
+2026-02-18 13:01:40,606 - src.nlp.processor - INFO - Processing query: halo
+2026-02-18 13:01:40,606 - src.nlp.processor - INFO - No match found for: halo
+2026-02-18 13:01:40,606 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 13:01:47,568 - src.stt.engine - INFO - Recognized: jakie ceny
+2026-02-18 13:01:47,568 - __main__ - INFO - Processing: jakie ceny
+2026-02-18 13:01:47,568 - src.nlp.processor - INFO - Processing query: jakie ceny
+2026-02-18 13:01:47,568 - src.nlp.processor - INFO - No match found for: jakie ceny
+2026-02-18 13:01:47,569 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 13:01:53,457 - src.stt.engine - INFO - Recognized: jakie są ceny
+2026-02-18 13:01:53,458 - __main__ - INFO - Processing: jakie są ceny
+2026-02-18 13:01:53,458 - src.nlp.processor - INFO - Processing query: jakie są ceny
+2026-02-18 13:01:53,458 - src.nlp.processor - INFO - No match found for: jakie są ceny
+2026-02-18 13:01:53,458 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 13:02:11,479 - __main__ - INFO - Received shutdown signal
+2026-02-18 13:02:11,507 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 13:02:11,507 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 13:02:11,507 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 13:17:19,064 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 13:17:19,064 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 13:17:19,658 - src.tts.engine - INFO - Found Polish voice: Zosia
+2026-02-18 13:17:19,659 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 13:17:19,659 - src.tts.engine - INFO - TTS Engine initialized with rate: 190
+2026-02-18 13:17:20,309 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 13:17:21,420 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 13:17:21,420 - src.nlp.processor - INFO - NLP Processor initialized
+2026-02-18 13:17:21,420 - __main__ - INFO - All components initialized successfully
+2026-02-18 13:17:21,420 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 13:17:21,420 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 13:18:13,013 - __main__ - INFO - Received shutdown signal
+2026-02-18 13:18:13,824 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 13:18:13,824 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 13:18:13,824 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 13:25:57,163 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 13:25:57,163 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 13:25:57,758 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 13:25:57,758 - src.tts.engine - INFO - TTS Engine initialized with rate: 170
+2026-02-18 13:25:58,405 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 13:25:59,521 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 13:25:59,521 - src.nlp.processor - INFO - NLP Processor initialized
+2026-02-18 13:25:59,521 - __main__ - INFO - All components initialized successfully
+2026-02-18 13:25:59,521 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 13:25:59,521 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі... ... ......
+2026-02-18 13:26:08,098 - src.stt.engine - INFO - Recognized: halo
+2026-02-18 13:26:08,099 - __main__ - INFO - Processing: halo
+2026-02-18 13:26:08,099 - src.nlp.processor - INFO - Processing: halo
+2026-02-18 13:26:08,099 - src.nlp.processor - INFO - No match for: halo
+2026-02-18 13:26:08,099 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 13:26:17,571 - src.stt.engine - INFO - Recognized: halo
+2026-02-18 13:26:17,572 - __main__ - INFO - Processing: halo
+2026-02-18 13:26:17,572 - src.nlp.processor - INFO - Processing: halo
+2026-02-18 13:26:17,576 - src.nlp.processor - INFO - No match for: halo
+2026-02-18 13:26:17,581 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 13:26:20,951 - src.stt.engine - INFO - Recognized: Proszę zapytać obsługę
+2026-02-18 13:26:20,952 - __main__ - INFO - Processing: Proszę zapytać obsługę
+2026-02-18 13:26:20,952 - src.nlp.processor - INFO - Processing: proszę zapytać obsługę
+2026-02-18 13:26:20,952 - src.nlp.processor - INFO - No match for: proszę zapytać obsługę
+2026-02-18 13:26:20,952 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 13:26:24,493 - src.stt.engine - INFO - Recognized: Proszę zapytać obsługę
+2026-02-18 13:26:24,494 - __main__ - INFO - Processing: Proszę zapytać obsługę
+2026-02-18 13:26:24,494 - src.nlp.processor - INFO - Processing: proszę zapytać obsługę
+2026-02-18 13:26:24,494 - src.nlp.processor - INFO - No match for: proszę zapytać obsługę
+2026-02-18 13:26:24,494 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 13:26:28,100 - src.stt.engine - INFO - Recognized: Proszę zapytać obsługę
+2026-02-18 13:26:28,100 - __main__ - INFO - Processing: Proszę zapytać obsługę
+2026-02-18 13:26:28,101 - src.nlp.processor - INFO - Processing: proszę zapytać obsługę
+2026-02-18 13:26:28,101 - src.nlp.processor - INFO - No match for: proszę zapytać obsługę
+2026-02-18 13:26:28,101 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 13:26:31,600 - src.stt.engine - INFO - Recognized: Proszę zapytać obsługę
+2026-02-18 13:26:31,601 - __main__ - INFO - Processing: Proszę zapytać obsługę
+2026-02-18 13:26:31,601 - src.nlp.processor - INFO - Processing: proszę zapytać obsługę
+2026-02-18 13:26:31,601 - src.nlp.processor - INFO - No match for: proszę zapytać obsługę
+2026-02-18 13:26:31,601 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 13:26:44,778 - __main__ - INFO - Received shutdown signal
+2026-02-18 13:26:45,267 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 13:26:45,268 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 13:26:45,268 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 14:02:36,529 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 14:02:36,529 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 14:02:37,128 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 14:02:37,128 - src.tts.engine - INFO - TTS Engine initialized with rate: 170
+2026-02-18 14:02:37,779 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 14:02:38,891 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 14:02:38,892 - src.nlp.processor - INFO - NLP Processor initialized
+2026-02-18 14:02:38,892 - __main__ - INFO - All components initialized successfully
+2026-02-18 14:02:38,892 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 14:02:38,892 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі... ... ......
+2026-02-18 14:02:50,674 - src.stt.engine - INFO - Recognized: How are you
+2026-02-18 14:02:50,674 - __main__ - INFO - Processing: How are you
+2026-02-18 14:02:50,675 - src.nlp.processor - INFO - Processing: how are you
+2026-02-18 14:02:50,675 - src.nlp.processor - INFO - No match for: how are you
+2026-02-18 14:02:50,675 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 14:02:56,460 - src.stt.engine - INFO - Recognized: How are you
+2026-02-18 14:02:56,461 - __main__ - INFO - Processing: How are you
+2026-02-18 14:02:56,461 - src.nlp.processor - INFO - Processing: how are you
+2026-02-18 14:02:56,461 - src.nlp.processor - INFO - No match for: how are you
+2026-02-18 14:02:56,461 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 14:02:59,834 - src.stt.engine - INFO - Recognized: Proszę zapytać obsługę
+2026-02-18 14:02:59,835 - __main__ - INFO - Processing: Proszę zapytać obsługę
+2026-02-18 14:02:59,835 - src.nlp.processor - INFO - Processing: proszę zapytać obsługę
+2026-02-18 14:02:59,835 - src.nlp.processor - INFO - No match for: proszę zapytać obsługę
+2026-02-18 14:02:59,835 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 14:03:07,358 - src.stt.engine - INFO - Recognized: Przepraszam zapytać o obsługę
+2026-02-18 14:03:07,359 - __main__ - INFO - Processing: Przepraszam zapytać o obsługę
+2026-02-18 14:03:07,359 - src.nlp.processor - INFO - Processing: przepraszam zapytać o obsługę
+2026-02-18 14:03:07,359 - src.nlp.processor - INFO - No match for: przepraszam zapytać o obsługę
+2026-02-18 14:03:07,359 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 14:03:11,038 - src.stt.engine - INFO - Recognized: przeprosisz zapytać o obsługę
+2026-02-18 14:03:11,039 - __main__ - INFO - Processing: przeprosisz zapytać o obsługę
+2026-02-18 14:03:11,039 - src.nlp.processor - INFO - Processing: przeprosisz zapytać o obsługę
+2026-02-18 14:03:11,039 - src.nlp.processor - INFO - No match for: przeprosisz zapytać o obsługę
+2026-02-18 14:03:11,039 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 14:03:14,662 - src.stt.engine - INFO - Recognized: Proszę zapytać obsługę
+2026-02-18 14:03:14,663 - __main__ - INFO - Processing: Proszę zapytać obsługę
+2026-02-18 14:03:14,663 - src.nlp.processor - INFO - Processing: proszę zapytać obsługę
+2026-02-18 14:03:14,663 - src.nlp.processor - INFO - No match for: proszę zapytać obsługę
+2026-02-18 14:03:14,663 - src.tts.engine - INFO - Speaking: Przepraszam,  nie rozumiem... ... ...   Proszę zap...
+2026-02-18 14:03:35,970 - __main__ - INFO - Received shutdown signal
+2026-02-18 14:03:36,354 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 14:03:36,354 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 14:03:36,354 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 14:07:16,858 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 14:07:16,858 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 14:07:17,498 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 14:07:17,498 - src.tts.engine - INFO - TTS Engine initialized with rate: 170
+2026-02-18 14:07:18,173 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 14:07:19,290 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 14:07:19,291 - src.nlp.processor - INFO - NLP Processor gotowy do naturalnej rozmowy
+2026-02-18 14:07:19,291 - __main__ - INFO - All components initialized successfully
+2026-02-18 14:07:19,291 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 14:07:19,291 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі... ... ......
+2026-02-18 14:07:29,090 - src.stt.engine - INFO - Recognized: halo
+2026-02-18 14:07:29,090 - __main__ - INFO - Processing: halo
+2026-02-18 14:07:29,090 - src.nlp.processor - INFO - 🤔 Rozmówca: halo
+2026-02-18 14:07:29,091 - src.nlp.processor - INFO - Nie zrozumiałem: halo
+2026-02-18 14:07:29,091 - src.tts.engine - INFO - Speaking: Hmm,  nie jestem pewien czy dobrze zrozumiałem... ...
+2026-02-18 14:07:42,342 - src.stt.engine - INFO - Recognized: halo
+2026-02-18 14:07:42,343 - __main__ - INFO - Processing: halo
+2026-02-18 14:07:42,343 - src.nlp.processor - INFO - 🤔 Rozmówca: halo
+2026-02-18 14:07:42,343 - src.nlp.processor - INFO - Nie zrozumiałem: halo
+2026-02-18 14:07:42,344 - src.tts.engine - INFO - Speaking: Hmm,  nie jestem pewien czy dobrze zrozumiałem... ...
+2026-02-18 14:08:03,330 - __main__ - INFO - Received shutdown signal
+2026-02-18 14:08:03,356 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 14:08:03,356 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 14:08:03,356 - src.tts.engine - INFO - TTS engine stopped
