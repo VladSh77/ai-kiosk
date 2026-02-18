@@ -32,7 +32,7 @@ STT_LANGUAGE = "pl-PL"
 # TTS (Text-to-Speech) settings
 TTS_ENGINE = 'pyttsx3'
 TTS_VOICE = "polish"
-TTS_RATE = 200
+TTS_RATE = 190
 TTS_VOLUME = 0.9
 
 # NLP settings
