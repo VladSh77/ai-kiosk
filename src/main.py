@@ -1,0 +1,1 @@
+"""AI Kiosk main application"""
