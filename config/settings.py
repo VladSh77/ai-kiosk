@@ -47,7 +47,7 @@ AUDIO_LOG_FILE = LOGS_DIR / 'audio_interactions.log'
 
 # Security
 SECRETS_FILE = BASE_DIR / 'config' / 'secrets.env'
-ALLOWED_ORIGINS = ['http://localhost', 'http://127.0.0.1'\]
+ALLOWED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
 SESSION_TIMEOUT = 300  # seconds
 
 # Menu data (will be loaded from JSON)
