@@ -1,12 +1,16 @@
 """Main entry point for AI Kiosk application with secure error handling."""
 import sys
 import logging
+import time
 from pathlib import Path
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from config.settings import LOG_FILE, LOG_LEVEL, LOG_FORMAT, UNKNOWN_RESPONSE
+from src.stt.engine import STTEngine
+from src.tts.engine import TTSEngine
+from src.nlp.processor import NLPProcessor
 
 # Configure secure logging
 logging.basicConfig(
@@ -24,45 +28,74 @@ class AIKiosk:
     
     def __init__(self):
         self.running = False
+        self.stt = None
+        self.tts = None
+        self.nlp = None
         logger.info("AI Kiosk initialized")
+    
+    def initialize(self):
+        """Initialize all components."""
+        try:
+            logger.info("Initializing AI Kiosk components...")
+            self.tts = TTSEngine()
+            self.stt = STTEngine()
+            self.nlp = NLPProcessor()
+            logger.info("All components initialized successfully")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to initialize components: {e}", exc_info=True)
+            return False
     
     def start(self):
         """Start the kiosk main loop."""
+        if not self.initialize():
+            logger.critical("Cannot start kiosk - initialization failed")
+            return
+        
         self.running = True
-        logger.info("AI Kiosk started")
+        logger.info("AI Kiosk started - listening for voice input")
+        self.tts.speak_wait("Ласкаво просимо до ресторану Каркандакі. Чим я можу допомогти?")
         
         try:
             while self.running:
-                # TODO: Implement main voice loop
                 # 1. Listen for voice input
-                # 2. Convert speech to text
-                # 3. Process query (menu/QA)
-                # 4. Generate response
-                # 5. Convert text to speech
-                # 6. Play response
-                pass
+                logger.debug("Waiting for voice input...")
+                query = self.stt.listen(timeout=10)
+                
+                if not query:
+                    continue
+                
+                # 2. Special commands
+                if query.lower() in ['вихід', 'стоп', 'stop', 'exit']:
+                    self.tts.speak("До побачення!")
+                    self.stop()
+                    break
+                
+                if query.lower() in ['меню', 'menu', 'що є']:
+                    response = self.nlp.get_all_menu()
+                    self.tts.speak(response)
+                    continue
+                
+                # 3. Process query through NLP
+                logger.info(f"Processing: {query}")
+                response = self.nlp.process_query(query)
+                
+                # 4. Speak response
+                self.tts.speak(response)
+                
         except KeyboardInterrupt:
             logger.info("Received shutdown signal")
         except Exception as e:
-            logger.error(f"Unexpected error: {e}", exc_info=True)
-            # In production, might want to restart or show error screen
+            logger.error(f"Unexpected error in main loop: {e}", exc_info=True)
         finally:
             self.stop()
     
     def stop(self):
         """Gracefully shutdown the kiosk."""
         self.running = False
+        if self.tts:
+            self.tts.stop()
         logger.info("AI Kiosk stopped")
-    
-    def process_query(self, text: str) -> str:
-        """Process user query and return appropriate response."""
-        if not text or len(text) > 500:  # Security: limit input length
-            logger.warning(f"Invalid query length: {len(text) if text else 0}")
-            return UNKNOWN_RESPONSE
-        
-        # TODO: Implement menu/QA matching
-        # For now, return unknown response
-        return UNKNOWN_RESPONSE
 
 def main():
     """Application entry point with error handling."""
