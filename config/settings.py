@@ -32,7 +32,7 @@ STT_LANGUAGE = 'uk-UA'  # Ukrainian primary, Russian secondary
 # TTS (Text-to-Speech) settings
 TTS_ENGINE = 'pyttsx3'
 TTS_VOICE = 'ukrainian'  # Will try to find, fallback to default
-TTS_RATE = 150
+TTS_RATE = 180
 TTS_VOLUME = 0.9
 
 # NLP settings
