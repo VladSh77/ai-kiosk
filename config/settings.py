@@ -36,7 +36,7 @@ TTS_RATE = 200
 TTS_VOLUME = 0.9
 
 # NLP settings
-UNKNOWN_RESPONSE = "I don't know, ask operator"
+UNKNOWN_RESPONSE = "Przepraszam, nie rozumiem. Proszę zapytać obsługę."
 MAX_QUERY_LENGTH = 500
 
 # Logging
