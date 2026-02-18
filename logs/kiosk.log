@@ -278,3 +278,23 @@
 2026-02-18 12:29:38,109 - src.tts.engine - INFO - TTS engine stopped
 2026-02-18 12:29:38,109 - __main__ - INFO - AI Kiosk stopped
 2026-02-18 12:29:38,109 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 12:34:46,862 - __main__ - INFO - AI Kiosk initialized
+2026-02-18 12:34:46,862 - __main__ - INFO - Initializing AI Kiosk components...
+2026-02-18 12:34:47,443 - src.tts.engine - INFO - Found Polish voice: Zosia
+2026-02-18 12:34:47,443 - src.tts.engine - INFO - Selected voice: Zosia
+2026-02-18 12:34:47,444 - src.tts.engine - INFO - TTS Engine initialized with rate: 190
+2026-02-18 12:34:48,089 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 12:34:49,205 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 12:34:49,205 - src.nlp.processor - INFO - NLP Processor initialized with 4 menu items
+2026-02-18 12:34:49,205 - __main__ - INFO - All components initialized successfully
+2026-02-18 12:34:49,206 - __main__ - INFO - AI Kiosk started - listening for voice input
+2026-02-18 12:34:49,206 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 12:35:06,848 - src.stt.engine - INFO - Recognized: raz dwa trzy
+2026-02-18 12:35:06,848 - __main__ - INFO - Processing: raz dwa trzy
+2026-02-18 12:35:06,848 - src.nlp.processor - INFO - Processing query: raz dwa trzy
+2026-02-18 12:35:06,848 - src.nlp.processor - INFO - No match found for: raz dwa trzy
+2026-02-18 12:35:06,849 - src.tts.engine - INFO - Speaking: Przepraszam, nie rozumiem. Proszę zapytać obsługę....
+2026-02-18 12:35:11,437 - __main__ - INFO - Received shutdown signal
+2026-02-18 12:35:11,866 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 12:35:11,866 - __main__ - INFO - AI Kiosk stopped
+2026-02-18 12:35:11,866 - src.tts.engine - INFO - TTS engine stopped
