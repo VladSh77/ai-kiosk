@@ -1,0 +1,46 @@
+{
+  "restaurant": {
+    "name": "Karkandaki",
+    "cuisine": "ormiańska",
+    "greeting": "Dzień dobry! Witam w Karkandaki - ormiańskiej restauracji! Nazywam się Arax. Co powiesz na rozpoczęcie naszej rozmowy? Może opowiedzieć o Karkandaku - naszym flagowym daniu?",
+    "about": "Karkandaki to rodzinna restauracja od 2018 roku. Przygotowujemy dania według tradycyjnych ormiańskich receptur.",
+    "hours": "Jesteśmy otwarci codziennie od 8:00 do 22:00!",
+    "address": "Znajdziesz nas na ulicy Kolejowej 41 w Ostrowie Wielkopolskim.",
+    "phone": "530 324 239",
+    "delivery": "Dowozimy na terenie miasta za 10 zł.",
+    "payment": "Płacić można gotówką, kartą lub blikiem.",
+    "sauces": "Wszystkie sosy robimy sami według rodzinnych receptur!"
+  },
+  "dishes": [
+    {
+      "id": "ormianski",
+      "name": "Karkandak ormiański",
+      "price": 28,
+      "description": "Klasyk! Cieniutkie ciasto nadziewane ziemniakami z ziołami i czosnkiem.",
+      "ingredients": ["ciasto", "ziemniaki", "zioła", "czosnek"],
+      "allergens": ["gluten"]
+    },
+    {
+      "id": "mieso",
+      "name": "Karkandak z mięsem",
+      "price": 35,
+      "description": "Soczysta wołowina duszona z cebulą w cieście.",
+      "ingredients": ["ciasto", "wołowina", "cebula"],
+      "allergens": ["gluten"]
+    },
+    {
+      "id": "nutella",
+      "name": "Karkandak z nutellą",
+      "price": 22,
+      "description": "Słodki Karkandak z kremem czekoladowym.",
+      "ingredients": ["ciasto", "nutella"],
+      "allergens": ["gluten"]
+    }
+  ],
+  "faq": {
+    "polecacie": "Polecam Karkandak ormiański - to nasz klasyk! Albo z mięsem dla mięsożerców. Co brzmi lepiej?",
+    "godziny": "Jesteśmy czynni codziennie 8:00-22:00. Wpadaj!",
+    "adres": "ul. Kolejowa 41, Ostrów Wielkopolski - czekamy!",
+    "dowóz": "Dowozimy za 10 zł na terenie miasta. Dzwon pod 530 324 239."
+  }
+}

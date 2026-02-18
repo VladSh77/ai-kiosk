@@ -32,38 +32,39 @@ class TTSEngine:
         try:
             self.engine = pyttsx3.init()
             
-            # Set rate and volume first
+            # Set rate and volume
             self.engine.setProperty('rate', self.rate)
             self.engine.setProperty('volume', self.volume)
             
-            # Try to find Polish voice
             voices = self.engine.getProperty('voices')
             selected_voice = None
             
-            # Look for Polish voice
+            # Priorytet 1: Polski głos Zosia
             for voice in voices:
-                voice_name = voice.name.lower()
-                voice_id = voice.id.lower()
-                voice_langs = ' '.join(voice.languages).lower() if voice.languages else ''
-                
-                # Check for Polish indicators
-                if ('polish' in voice_name or 
-                    'polski' in voice_name or 
-                    'pl' in voice_langs or 
-                    'pl_' in voice_id):
+                if 'Zosia' in voice.name and 'pl_PL' in str(voice.languages):
                     selected_voice = voice
                     logger.info(f"Found Polish voice: {voice.name}")
                     break
             
-            # Fallback to first available voice
+            # Priorytet 2: Inne głosy żeńskie
+            if not selected_voice:
+                female_voices = ['Zuzana', 'Shelley', 'Sandy', 'Agnessa', 'Kate', 'Mariska', 'Milena', 'Monika', 'Natasha', 'Nika', 'Ola', 'Paulina', 'Tessa', 'Tina', 'Vani', 'Yelda', 'Yuna', 'Sara', 'Satu']
+                for voice in voices:
+                    if any(female in voice.name for female in female_voices):
+                        selected_voice = voice
+                        logger.info(f"Found female voice: {voice.name}")
+                        break
+            
+            # Priorytet 3: Dowolny głos
+            if not selected_voice and voices:
+                selected_voice = voices[0]
+                logger.info(f"Using default voice: {selected_voice.name}")
+            
             if selected_voice:
                 self.engine.setProperty('voice', selected_voice.id)
                 logger.info(f"Selected voice: {selected_voice.name}")
             else:
-                logger.warning("No Polish voice found, using default")
-                if voices:
-                    self.engine.setProperty('voice', voices[0].id)
-                    logger.info(f"Using default voice: {voices[0].name}")
+                logger.warning("No voice found, using default")
             
         except Exception as e:
             logger.error(f"Failed to initialize TTS engine: {e}")
@@ -104,7 +105,6 @@ class TTSEngine:
         if not text:
             return
         
-        # Security: limit text length
         if len(text) > 1000:
             logger.warning(f"Text too long ({len(text)} chars), truncating")
             text = text[:997] + "..."

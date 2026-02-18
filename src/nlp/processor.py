@@ -15,9 +15,13 @@ class NLPProcessor:
     def __init__(self):
         self.menu_data = self._load_json(MENU_FILE)
         self.qa_data = self._load_json(QA_FILE)
+        
+        # Nowa baza wiedzy z knowledge.json
+        self.knowledge = self._load_json(Path('data/knowledge.json'))
+        
         self.unknown_response = UNKNOWN_RESPONSE
         
-        logger.info(f"NLP Processor initialized with {self._count_menu_items()} menu items and {len(self.qa_data.get('questions', []))} QA items")
+        logger.info(f"NLP Processor initialized with {self._count_menu_items()} menu items")
     
     def _load_json(self, file_path: Path) -> dict:
         """Load JSON data from file."""
@@ -41,21 +45,15 @@ class NLPProcessor:
     
     def _normalize_text(self, text: str) -> str:
         """Normalize text for matching."""
-        # Convert to lowercase, remove punctuation
         text = text.lower()
         text = re.sub(r'[^\w\s]', '', text)
         return text.strip()
     
     def _extract_keywords(self, text: str) -> list:
         """Extract keywords from text."""
-        # Remove common stop words
-        stop_words = {'де', 'і', 'в', 'на', 'з', 'до', 'та', 'але', 'чи', 'як', 'що', 'це', 'є', 'меню'}
+        stop_words = {'co', 'to', 'jest', 'na', 'w', 'i', 'lub', 'czy', 'ma', 'pan', 'pani'}
         words = self._normalize_text(text).split()
         return [w for w in words if w not in stop_words and len(w) > 2]
-    
-    def _similarity(self, a: str, b: str) -> float:
-        """Calculate string similarity ratio."""
-        return SequenceMatcher(None, self._normalize_text(a), self._normalize_text(b)).ratio()
     
     def process_query(self, query: str) -> str:
         """Process user query and return appropriate response."""
@@ -64,104 +62,47 @@ class NLPProcessor:
             return self.unknown_response
         
         logger.info(f"Processing query: {query}")
+        query_norm = self._normalize_text(query)
         
-        # Try QA matching first
-        qa_response = self._match_qa(query)
-        if qa_response:
-            return qa_response
+        # 1. Sprawdź w FAQ z knowledge.json
+        if self.knowledge and 'faq' in self.knowledge:
+            for key, answer in self.knowledge['faq'].items():
+                if key in query_norm or any(word in query_norm for word in key.split('_')):
+                    logger.info(f"Found FAQ match: {key}")
+                    return answer
         
-        # Try menu matching
-        menu_response = self._match_menu(query)
-        if menu_response:
-            return menu_response
+        # 2. Sprawdź w daniach z knowledge.json
+        if self.knowledge and 'dishes' in self.knowledge:
+            for dish in self.knowledge['dishes']:
+                dish_name_norm = self._normalize_text(dish['name'])
+                if dish_name_norm in query_norm or any(word in dish_name_norm for word in query_norm.split()):
+                    logger.info(f"Found dish match: {dish['name']}")
+                    return f"{dish['name']} – {dish['description']} Cena: {dish['price']} zł."
         
-        # No match found
+        # 3. Sprawdź w restauracji z knowledge.json
+        if self.knowledge and 'restaurant' in self.knowledge:
+            rest = self.knowledge['restaurant']
+            if 'godzin' in query_norm or 'czynne' in query_norm or 'otwar' in query_norm:
+                return rest.get('hours', self.unknown_response)
+            if 'adres' in query_norm or 'gdzie' in query_norm or 'znajduje' in query_norm:
+                return rest.get('address', self.unknown_response)
+            if 'dowóz' in query_norm or 'dostaw' in query_norm or 'transport' in query_norm:
+                return rest.get('delivery', self.unknown_response)
+            if 'polecacie' in query_norm or 'dobre' in query_norm or 'specjały' in query_norm:
+                if 'faq' in self.knowledge and 'polecacie' in self.knowledge['faq']:
+                    return self.knowledge['faq']['polecacie']
+        
+        # 4. Jeśli nic nie znaleziono
         logger.info(f"No match found for: {query}")
         return self.unknown_response
     
-    def _match_qa(self, query: str) -> str:
-        """Match query against QA database."""
-        keywords = self._extract_keywords(query)
-        
-        for qa in self.qa_data.get('questions', []):
-            # Check keyword overlap
-            qa_keywords = qa.get('keywords', [])
-            if not qa_keywords:
-                continue
-            
-            # Count matching keywords
-            matches = sum(1 for kw in keywords if kw in qa_keywords)
-            if matches >= 2 or matches >= len(qa_keywords) * 0.5:
-                logger.debug(f"QA match found: {qa.get('question')}")
-                return qa.get('answer')
-            
-            # Check question similarity
-            if self._similarity(query, qa.get('question', '')) > 0.6:
-                logger.debug(f"QA similarity match: {qa.get('question')}")
-                return qa.get('answer')
-        
-        return None
-    
-    def _match_menu(self, query: str) -> str:
-        """Match query against menu items."""
-        keywords = self._extract_keywords(query)
-        best_match = None
-        best_score = 0
-        
-        for category in self.menu_data.get('categories', []):
-            for item in category.get('items', []):
-                # Check item name
-                name_score = self._similarity(query, item.get('name', ''))
-                
-                # Check keywords in name and description
-                item_text = f"{item.get('name', '')} {item.get('description', '')}"
-                item_text_norm = self._normalize_text(item_text)
-                
-                keyword_score = 0
-                for kw in keywords:
-                    if kw in item_text_norm:
-                        keyword_score += 1
-                
-                keyword_score = keyword_score / max(len(keywords), 1)
-                
-                # Combined score
-                score = max(name_score, keyword_score * 0.8)
-                
-                if score > best_score and score > 0.3:
-                    best_score = score
-                    best_match = item
-        
-        if best_match:
-            logger.debug(f"Menu match found: {best_match.get('name')} (score: {best_score:.2f})")
-            return self._format_menu_response(best_match)
-        
-        return None
-    
-    def _format_menu_response(self, item: dict) -> str:
-        """Format menu item as response."""
-        name = item.get('name', '')
-        description = item.get('description', '')
-        price = item.get('price', '')
-        
-        response = f"{name}. {description}"
-        if price:
-            response += f" Ціна: {price} грн."
-        
-        if 'weight' in item:
-            response += f" Вага: {item['weight']}г."
-        elif 'volume' in item:
-            response += f" Об'єм: {item['volume']}мл."
-        
-        return response
-    
     def get_all_menu(self) -> str:
         """Get full menu as response."""
-        response = "Наше меню:\n"
+        if not self.knowledge or 'dishes' not in self.knowledge:
+            return "Przepraszam, menu niedostępne."
         
-        for category in self.menu_data.get('categories', []):
-            response += f"\n{category.get('name')}:\n"
-            for item in category.get('items', []):
-                price = item.get('price', '')
-                response += f"  • {item.get('name')} - {price} грн\n"
+        response = "Nasze menu:\n"
+        for dish in self.knowledge['dishes']:
+            response += f"• {dish['name']} - {dish['price']} zł\n"
         
         return response
