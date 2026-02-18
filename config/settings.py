@@ -31,8 +31,8 @@ STT_LANGUAGE = "pl-PL"
 
 # TTS (Text-to-Speech) settings
 TTS_ENGINE = 'pyttsx3'
-TTS_VOICE = 'ukrainian'  # Will try to find, fallback to default
-TTS_RATE = 180
+TTS_VOICE = "polish"
+TTS_RATE = 200
 TTS_VOLUME = 0.9
 
 # NLP settings

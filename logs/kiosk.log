@@ -1,0 +1,86 @@
+2026-02-18 10:58:23,449 - src.main - INFO - AI Kiosk initialized
+2026-02-18 10:58:23,449 - src.main - INFO - Initializing AI Kiosk components...
+2026-02-18 10:58:24,058 - src.tts.engine - INFO - Found suitable voice: Леся (com.apple.voice.compact.uk-UA.Lesya)
+2026-02-18 10:58:24,058 - src.tts.engine - INFO - TTS Engine initialized with voice: ukrainian
+2026-02-18 10:58:24,730 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 10:58:25,849 - src.stt.engine - INFO - STT Engine initialized with google, language: uk-UA
+2026-02-18 10:58:25,850 - src.nlp.processor - INFO - NLP Processor initialized with 4 menu items and 4 QA items
+2026-02-18 10:58:25,850 - src.main - INFO - All components initialized successfully
+2026-02-18 10:58:25,850 - src.main - INFO - AI Kiosk started - listening for voice input
+2026-02-18 10:58:25,850 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 10:58:36,619 - src.stt.engine - INFO - Recognized: що у вас є їсти
+2026-02-18 10:58:36,620 - src.main - INFO - Processing: що у вас є їсти
+2026-02-18 10:58:36,620 - src.nlp.processor - INFO - Processing query: що у вас є їсти
+2026-02-18 10:58:36,620 - src.nlp.processor - INFO - No match found for: що у вас є їсти
+2026-02-18 10:58:36,620 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 10:58:41,278 - src.stt.engine - INFO - Recognized: Ok Google
+2026-02-18 10:58:41,278 - src.main - INFO - Processing: Ok Google
+2026-02-18 10:58:41,278 - src.nlp.processor - INFO - Processing query: Ok Google
+2026-02-18 10:58:41,279 - src.nlp.processor - INFO - No match found for: Ok Google
+2026-02-18 10:58:41,279 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 10:58:49,060 - src.stt.engine - INFO - Recognized: що у вас є їсти
+2026-02-18 10:58:49,061 - src.main - INFO - Processing: що у вас є їсти
+2026-02-18 10:58:49,061 - src.nlp.processor - INFO - Processing query: що у вас є їсти
+2026-02-18 10:58:49,061 - src.nlp.processor - INFO - No match found for: що у вас є їсти
+2026-02-18 10:58:49,061 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 10:59:03,806 - src.stt.engine - INFO - Recognized: українською
+2026-02-18 10:59:03,807 - src.main - INFO - Processing: українською
+2026-02-18 10:59:03,807 - src.nlp.processor - INFO - Processing query: українською
+2026-02-18 10:59:03,807 - src.tts.engine - INFO - Speaking: Хачапурі по-аджарськи. Лодочка з сиром та яйцем Ці...
+2026-02-18 10:59:13,022 - src.stt.engine - INFO - Recognized: ладошка з сиром та яйцем
+2026-02-18 10:59:13,023 - src.main - INFO - Processing: ладошка з сиром та яйцем
+2026-02-18 10:59:13,023 - src.nlp.processor - INFO - Processing query: ладошка з сиром та яйцем
+2026-02-18 10:59:13,023 - src.tts.engine - INFO - Speaking: Хачапурі по-аджарськи. Лодочка з сиром та яйцем Ці...
+2026-02-18 10:59:22,517 - src.stt.engine - INFO - Recognized: ладошка з сиром та яйцем ціна 180 грн ва
+2026-02-18 10:59:22,517 - src.main - INFO - Processing: ладошка з сиром та яйцем ціна 180 грн ва
+2026-02-18 10:59:22,517 - src.nlp.processor - INFO - Processing query: ладошка з сиром та яйцем ціна 180 грн ва
+2026-02-18 10:59:22,518 - src.nlp.processor - INFO - No match found for: ладошка з сиром та яйцем ціна 180 грн ва
+2026-02-18 10:59:22,518 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 10:59:31,637 - src.main - INFO - Received shutdown signal
+2026-02-18 10:59:32,552 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 10:59:32,552 - src.main - INFO - AI Kiosk stopped
+2026-02-18 10:59:32,561 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 11:02:12,039 - src.main - INFO - AI Kiosk initialized
+2026-02-18 11:02:12,040 - src.main - INFO - Initializing AI Kiosk components...
+2026-02-18 11:02:12,666 - src.tts.engine - INFO - Found suitable voice: Леся (com.apple.voice.compact.uk-UA.Lesya)
+2026-02-18 11:02:12,667 - src.tts.engine - INFO - TTS Engine initialized with voice: ukrainian
+2026-02-18 11:02:13,346 - src.stt.engine - INFO - Calibrating microphone for ambient noise...
+2026-02-18 11:02:14,467 - src.stt.engine - INFO - STT Engine initialized with google, language: pl-PL
+2026-02-18 11:02:14,467 - src.nlp.processor - INFO - NLP Processor initialized with 4 menu items and 4 QA items
+2026-02-18 11:02:14,467 - src.main - INFO - All components initialized successfully
+2026-02-18 11:02:14,467 - src.main - INFO - AI Kiosk started - listening for voice input
+2026-02-18 11:02:14,467 - src.tts.engine - INFO - Speaking (blocking): Ласкаво просимо до ресторану Каркандакі. Чим я мож...
+2026-02-18 11:02:24,922 - src.stt.engine - INFO - Recognized: kiełbas menu
+2026-02-18 11:02:24,923 - src.main - INFO - Processing: kiełbas menu
+2026-02-18 11:02:24,923 - src.nlp.processor - INFO - Processing query: kiełbas menu
+2026-02-18 11:02:24,924 - src.nlp.processor - INFO - No match found for: kiełbas menu
+2026-02-18 11:02:24,924 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 11:02:32,827 - src.stt.engine - INFO - Recognized: How are you
+2026-02-18 11:02:32,827 - src.main - INFO - Processing: How are you
+2026-02-18 11:02:32,827 - src.nlp.processor - INFO - Processing query: How are you
+2026-02-18 11:02:32,828 - src.nlp.processor - INFO - No match found for: How are you
+2026-02-18 11:02:32,828 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 11:02:40,487 - src.stt.engine - INFO - Recognized: cześć
+2026-02-18 11:02:40,488 - src.main - INFO - Processing: cześć
+2026-02-18 11:02:40,488 - src.nlp.processor - INFO - Processing query: cześć
+2026-02-18 11:02:40,488 - src.nlp.processor - INFO - No match found for: cześć
+2026-02-18 11:02:40,488 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 11:02:47,755 - src.stt.engine - INFO - Recognized: cześć cześć
+2026-02-18 11:02:47,756 - src.main - INFO - Processing: cześć cześć
+2026-02-18 11:02:47,756 - src.nlp.processor - INFO - Processing query: cześć cześć
+2026-02-18 11:02:47,756 - src.nlp.processor - INFO - No match found for: cześć cześć
+2026-02-18 11:02:47,756 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 11:02:54,005 - src.stt.engine - INFO - Recognized: jedzenie
+2026-02-18 11:02:54,006 - src.main - INFO - Processing: jedzenie
+2026-02-18 11:02:54,006 - src.nlp.processor - INFO - Processing query: jedzenie
+2026-02-18 11:02:54,006 - src.nlp.processor - INFO - No match found for: jedzenie
+2026-02-18 11:02:54,006 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 11:03:03,304 - src.stt.engine - INFO - Recognized: How are you
+2026-02-18 11:03:03,304 - src.main - INFO - Processing: How are you
+2026-02-18 11:03:03,304 - src.nlp.processor - INFO - Processing query: How are you
+2026-02-18 11:03:03,305 - src.nlp.processor - INFO - No match found for: How are you
+2026-02-18 11:03:03,305 - src.tts.engine - INFO - Speaking: I don't know, ask operator...
+2026-02-18 11:03:15,591 - src.main - INFO - Received shutdown signal
+2026-02-18 11:03:16,349 - src.tts.engine - INFO - TTS engine stopped
+2026-02-18 11:03:16,349 - src.main - INFO - AI Kiosk stopped
+2026-02-18 11:03:16,359 - src.tts.engine - INFO - TTS engine stopped
