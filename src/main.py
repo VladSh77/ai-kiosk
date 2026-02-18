@@ -133,11 +133,10 @@ class KarkandakiKiosk:
                     break
 
                 text = self.stt.get_text()
-                if text:
-                    print(f"[STT] Rozpoznano tekst: '{text}'")
-                    self.last_interaction = time.time()
-                    resp = (
-                        "Pogoda na karkandaka zawsze jest świetna!"
+        if text:
+            print(f"[STT] Rozpoznano tekst: '{text}'")
+            self.last_interaction = time.time()
+            resp = self.nlp.generate_response(text)
                         if "pogod" in text.lower()
                         else random.choice(self.smart_replies)
                     )
