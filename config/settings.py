@@ -27,7 +27,7 @@ MAX_RECORDING_TIME = 10  # seconds
 
 # STT (Speech-to-Text) settings
 STT_ENGINE = 'google'  # fallback: 'sphinx' for offline
-STT_LANGUAGE = 'uk-UA'  # Ukrainian primary, Russian secondary
+STT_LANGUAGE = "pl-PL"
 
 # TTS (Text-to-Speech) settings
 TTS_ENGINE = 'pyttsx3'
